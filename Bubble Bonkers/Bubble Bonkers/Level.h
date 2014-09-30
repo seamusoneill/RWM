@@ -2,21 +2,23 @@
 #define _LEVEL_H_
 #include <Box2D/Box2D.h>
 #include <SDL.h>
-#include <stdio.h>
 #include "CONSTANTS.h"
 
 class Level {
 
 private:
-	bool loadLevel();
-	bool init();
-	SDL_Surface* background; //Image
-	b2AABB playArea;	
 	
+	bool init();
+	SDL_Surface* mBackground; //Image
+	SDL_Surface* mWindow;
+	b2PolygonShape playArea;
+	bool loadLevel();
+
 public:
 	Level();
+	Level(SDL_Surface*);
 	~Level();
-
+	void unloadLevel();
 	//Getters and Setters
 	b2AABB getBoundaries();
 };
