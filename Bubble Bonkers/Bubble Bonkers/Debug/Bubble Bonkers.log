@@ -1,17 +1,22 @@
-﻿Build started 30/09/2014 21:20:14.
+﻿Build started 01/10/2014 12:00:02.
      1>Project "C:\Users\lab422\Documents\Lab Work\Real World Modelling\Bubble Bonkers\Bubble Bonkers\Bubble Bonkers.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\SDL2-2.0.3\include" /I"C:\Users\lab422\Documents\Lab Work\Real World Modelling\\" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
-         main.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\SDL2-2.0.3\include" /I"C:\Users\lab422\Documents\Lab Work\Real World Modelling\\" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt BubbleBullet.cpp
+         BubbleBullet.cpp
+     1>c:\users\lab422\documents\lab work\real world modelling\bubble bonkers\bubble bonkers\bubblebullet.cpp(62): warning C4244: '+=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\lab422\documents\lab work\real world modelling\bubble bonkers\bubble bonkers\bubblebullet.cpp(68): warning C4244: '-=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\lab422\documents\lab work\real world modelling\bubble bonkers\bubble bonkers\bubblebullet.cpp(72): warning C4244: '+=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\lab422\documents\lab work\real world modelling\bubble bonkers\bubble bonkers\bubblebullet.cpp(78): warning C4244: '-=' : conversion from 'float' to 'int', possible loss of data
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\lab422\Documents\Lab Work\Real World Modelling\Bubble Bonkers\Debug\Bubble Bonkers.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "C:\SDL2-2.0.3\VisualC\SDL\Win32\Debug\SDL2.lib" "C:\SDL2-2.0.3\VisualC\SDLmain\Win32\Debug\SDL2main.lib" "C:\Users\lab422\Documents\Lab Work\Real World Modelling\lib\Box2D.lib" "C:\SDL2-2.0.3\VisualC\SDLmain\Win32\Debug\SDL2main.lib" "C:\Users\lab422\Documents\Lab Work\Real World Modelling\lib\SDL2_image.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\lab422\Documents\Lab Work\Real World Modelling\Bubble Bonkers\Debug\Bubble Bonkers.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\lab422\Documents\Lab Work\Real World Modelling\Bubble Bonkers\Debug\Bubble Bonkers.lib" /MACHINE:X86 Debug\Arrow.obj
          Debug\BubbleBullet.obj
          Debug\BubbleTarget.obj
          Debug\Level.obj
+         Debug\LTexture.obj
          Debug\main.obj
          Bubble Bonkers.vcxproj -> C:\Users\lab422\Documents\Lab Work\Real World Modelling\Bubble Bonkers\Debug\Bubble Bonkers.exe
      1>Done Building Project "C:\Users\lab422\Documents\Lab Work\Real World Modelling\Bubble Bonkers\Bubble Bonkers\Bubble Bonkers.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.25
+Time Elapsed 00:00:00.84

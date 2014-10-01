@@ -83,6 +83,7 @@
     <ClCompile Include="BubbleBullet.cpp" />
     <ClCompile Include="BubbleTarget.cpp" />
     <ClCompile Include="Level.cpp" />
+    <ClCompile Include="LTexture.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +92,7 @@
     <ClInclude Include="BubbleTarget.h" />
     <ClInclude Include="CONSTANTS.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="LTexture.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\arrow.png" />

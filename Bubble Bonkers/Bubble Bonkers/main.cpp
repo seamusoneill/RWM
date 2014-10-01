@@ -7,25 +7,33 @@
 #include "CONSTANTS.h"
 #include "Level.h"
 #include "Arrow.h"
+#include "LTexture.h"
 #include "BubbleBullet.h"
 #include "BubbleTarget.h"
 
 bool init(); //Starts up SDL and creates media
 bool loadMedia(); //Loads media
 void close(); //Frees Media  and shuts down SDL
-
-
+void gameLoop();
+void detectWallColliison();
 
 int score; //Player Score
+int lives; //Player Lives
+
 Level level;
-BubbleBullet* bubbleBullet;
-BubbleTarget* bubbleTarget;
+BubbleBullet bubbleBullet;
+BubbleTarget bubbleTarget;
+LTexture m_animation; //bubble bursting animation
+int frame = 0; //bubble bursting animation frame
 Arrow arrow;
 bool quit =false ;
 SDL_Event e;
 SDL_Window* gWindow = NULL; //The window we'll be rendering to
 
 SDL_Surface* gScreenSurface = NULL;//The surface contained by the window
+
+//The window renderer
+SDL_Renderer* gRenderer = NULL;
 
 enum KeyPressSurfaces
 {
@@ -44,40 +52,12 @@ int main( int argc, char* args[] ){
 
     while( !quit )
     {
-	  //Handle events on queue
-      while( SDL_PollEvent( &e ) != 0 )
-	 {    
-		 if(e.type == SDL_KEYDOWN)
-		 {
-			 switch(e.key.keysym.sym)
-			 {
-				case SDLK_LEFT:
-					arrow.arrowBounds.x--; 
-					break;
-				case SDLK_RIGHT:
-				arrow.arrowBounds.x++; 
-					break;
-				case SDLK_ESCAPE:
-					quit = true;
-			 }
-		 } 	
-		 //User requests quit
-		 if( e.type == SDL_QUIT )
-		 {
-			 quit = true;
-		 }
-
-		 //Apply the image
-		SDL_BlitSurface( arrow.image, NULL, gScreenSurface, &arrow.arrowBounds);
-		//Update the surface
-        SDL_UpdateWindowSurface( gWindow );	
-		}
-	 } 
+		gameLoop();
+	}
+	
 	//Free resources and close SDL
-    close();
-
-    return 0;
- 
+	close();
+	return 0;
 }
 
 bool init(){
@@ -101,7 +81,20 @@ bool init(){
         }
         else
         {
-         //Initialize PNG loading
+			//Create vsynced renderer for window
+			gRenderer = SDL_CreateRenderer( gWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC );
+			if( gRenderer == NULL )
+			{
+				printf( "Renderer could not be created! SDL Error: %s\n", SDL_GetError() );
+				success = false;
+			}
+			else
+			{
+				//Initialize renderer color
+				SDL_SetRenderDrawColor( gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
+			}
+
+			//Initialize PNG loading
             int imgFlags = IMG_INIT_PNG;
             if( !( IMG_Init( imgFlags ) & imgFlags ) )
             {
@@ -118,12 +111,58 @@ bool init(){
 
 	level = Level(gScreenSurface);
   	arrow = Arrow();
+	bubbleBullet = BubbleBullet();
+	bubbleTarget = BubbleTarget();
+	bubbleTarget.loadBubbleImage();
+	bubbleBullet.loadBubbleImage();
 	return success;
 }
 
 bool loadMedia(){
 	return true;
 }
+
+void gameLoop(){
+	//Handle events on queue
+	while( SDL_PollEvent( &e ) != 0 )
+	{
+		if(e.type == SDL_KEYDOWN)
+		{
+			switch(e.key.keysym.sym)
+			{
+			case SDLK_LEFT:
+				arrow.arrowBounds.x--; 
+				break;
+			case SDLK_RIGHT:
+				arrow.arrowBounds.x++; 
+				break;
+			case SDLK_ESCAPE:
+				quit = true;
+			}
+		}
+		bubbleBullet.handleEvent(e);
+		//User requests quit
+		if( e.type == SDL_QUIT )
+		{
+			quit = true;
+
+		}
+	}
+	detectWallColliison();
+	bubbleBullet.move();
+	level.draw();
+	//Apply the image
+	SDL_BlitSurface( arrow.image, NULL, gScreenSurface, &arrow.arrowBounds);
+	
+	//Fill the surface
+	SDL_Delay(50);
+	bubbleTarget.drawBubble(gScreenSurface);
+	bubbleBullet.drawBubble(gScreenSurface);
+		
+	//Update the surface
+	SDL_UpdateWindowSurface( gWindow );
+}
+
 void close()
 {
 	level.unloadLevel();
@@ -136,6 +175,49 @@ void close()
     SDL_Quit();
 }
 
-bool collisionDetection(){
+void detectWallColliison(){
+	if  (bubbleBullet.location.x + bubbleBullet.DOT_WIDTH >= CONSTANTS::PLAY_AREA_X + CONSTANTS::PLAY_AREA_WIDTH)
+	{
+		bubbleBullet.setVelocity(-1, 1);
+	}
+	else if(bubbleBullet.location.x <= CONSTANTS::PLAY_AREA_X )
+	{
+		bubbleBullet.setVelocity(-1, 1);
+	}
+	else{
+	
+	}
+}
+
+bool detectBubbleCollision(){
+	
+	if (true)
+	{
+		if ((bubbleBullet.Pink && bubbleTarget.Pink)
+			|| (bubbleBullet.Blue && bubbleTarget.Blue))
+		{
+			//Update the surface
+			if (bubbleTarget.m_Animation)
+			{
+				SDL_SetRenderDrawColor( gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
+				SDL_RenderClear( gRenderer );
+				SDL_Rect* currentClip = &m_animation.gSpriteClips[ frame / 7 ];
+				m_animation.render( ( CONSTANTS::PLAY_AREA_WIDTH - currentClip->w ) / 2, ( CONSTANTS::PLAY_AREA_HEIGHT - currentClip->h ) / 2, currentClip ,gRenderer);
+				SDL_RenderPresent( gRenderer );
+				++frame;
+				if( frame / 7 >= 7 )
+				{
+					frame = 0;
+					bubbleTarget.m_Animation = false;
+				}
+			}
+			score++;
+		}
+		else if ((bubbleBullet.Pink && bubbleTarget.Blue)
+			|| (bubbleBullet.Blue && bubbleTarget.Pink))
+		{
+			lives--;
+		}
+	}
 	return false;
 }

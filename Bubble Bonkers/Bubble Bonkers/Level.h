@@ -11,6 +11,7 @@ private:
 	bool init();
 	SDL_Surface* mBackground; //Image
 	SDL_Surface* mWindow;
+	b2World* mWorld;
 	b2PolygonShape playArea;
 	bool loadLevel();
 
@@ -19,6 +20,7 @@ public:
 	Level(SDL_Surface*);
 	~Level();
 	void unloadLevel();
+	void draw();
 	//Getters and Setters
 	b2AABB getBoundaries();
 };

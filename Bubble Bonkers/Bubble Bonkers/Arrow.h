@@ -12,7 +12,6 @@ class Arrow
 {
 public:
 	Arrow::Arrow();
-public:
 	SDL_Surface* image;
 	SDL_Rect arrowBounds;
 	float angle;

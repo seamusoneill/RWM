@@ -1,25 +1,28 @@
 #include "BubbleTarget.h"
 #include <random>
 #include <iostream>
+#include <time.h>
 
 using namespace std;
 
 
 BubbleTarget::BubbleTarget()
 {
+	srand ( time(NULL) );
 	m_Size = 0;
+	m_Animation = false;
 }
 
 bool BubbleTarget::loadBubbleImage()
 {
 	bool success = true;
-
+	
 	//Load image
-	bubbleImg = SDL_LoadBMP("B_blue.bmp");
+	bubbleImg = IMG_Load("C:/Users/lab422/Documents/Lab Work/Real World Modelling/B_blue.png");
 	if(bubbleImg)
 		vPhotos.push_back(bubbleImg);
 	
-	bubbleImg1 = SDL_LoadBMP("B_pink.bmp");
+	bubbleImg1 = IMG_Load("C:/Users/Lab422/Documents/Lab Work/Real World Modelling/B_pink.png");
 	if(bubbleImg1)
 		vPhotos.push_back(bubbleImg1);
 
@@ -63,6 +66,7 @@ void BubbleTarget::drawBubble(SDL_Surface* screenSurface)
 		{
 			LocationData.clear();
 			PhotosData.clear();
+			m_Animation = true;
 		}
 			
 
@@ -71,22 +75,19 @@ void BubbleTarget::drawBubble(SDL_Surface* screenSurface)
 			SDL_BlitSurface( PhotosData[i], NULL, screenSurface, &LocationData[i] );
 		}
 	}
-
-
-	//SDL_RendererFlip(screenSurface);
 }
 
 
 
 float BubbleTarget::getRandomPosX()
 {	
-	float val = rand() % CONSTANTS::SCREEN_WIDTH + 1;
+	float val = rand() % 480 + 54;
 
 	return val;
 }
 float BubbleTarget::getRandomPosY()
 {	
-	float val = rand() % CONSTANTS::SCREEN_HEIGHT + 1;
+	float val = rand() % 405 - 1;
 
 	return val;
 }

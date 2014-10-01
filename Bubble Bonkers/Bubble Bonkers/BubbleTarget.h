@@ -2,13 +2,16 @@
 #define __BUBBLE_H_INCLUDED__
 #include <SDL.h>
 #include <vector>
+#include <SDL_image.h>
 #include "CONSTANTS.h"
+
 using namespace std;
 
 
 class BubbleTarget
 {
-	static enum colorController {Blue, Pink};
+
+
 private:
 
 	SDL_Surface* bubbleImg;
@@ -24,10 +27,7 @@ public:
 	vector<SDL_Surface*> PhotosData;
 	int m_Size;
 	bool m_Display;
-
-
-public:
-	
+	bool m_Animation;
 
 	BubbleTarget();
 
@@ -36,6 +36,12 @@ public:
 
 	float getRandomPosX();
 	float getRandomPosY();
+	
+	static enum colorController {
+		Blue,
+		Pink
+	};
+
 };
 
 

@@ -1,6 +1,6 @@
 #include "Level.h"
 
-//Contructor
+//Contructors
 Level::Level(){
 }
 
@@ -8,9 +8,9 @@ Level::Level(SDL_Surface* window){
 	mWindow = window;
 	loadLevel();
 	init();
-
 }
 
+//Deconstructor
 Level::~Level(){
 }
 
@@ -23,13 +23,12 @@ void Level::unloadLevel(){
 bool Level::init()
 {
 	bool success = true;
-	
+	/*
 	b2BodyDef playAreaBodyDef;
 	playAreaBodyDef.type = b2_staticBody;
 	playAreaBodyDef.position.Set(54,0);
-	playAreaBodyDef.fixedRotation = 0;
+	playAreaBodyDef.angle = 0;
 
-	b2World* mWorld;
 	mWorld =  new b2World(b2Vec2_zero);
 	b2Body* staticBody = mWorld->CreateBody(&playAreaBodyDef);
 
@@ -37,10 +36,7 @@ bool Level::init()
 	b2FixtureDef boxFixtureDef;
 	boxFixtureDef.shape = &playArea;
 	staticBody->CreateFixture(&boxFixtureDef);
-
-	//Apply the image
-	SDL_BlitSurface( mBackground, NULL, mWindow, NULL );
-	
+	*/
 	return success;
 }
 
@@ -60,4 +56,9 @@ bool Level::loadLevel(){
     }
 
 	return success;
+}
+
+void Level::draw(){
+	//Apply the image
+	SDL_BlitSurface( mBackground, NULL, mWindow, NULL );
 }
