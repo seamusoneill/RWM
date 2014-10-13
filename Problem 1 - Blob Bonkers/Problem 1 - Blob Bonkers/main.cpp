@@ -2,13 +2,13 @@
 and may not be redistributed without written permission.*/
 
 //Using SDL and standard IO
-#include "Box2d.h"
+#include "Box2D/Box2D.h"
 #include <SDL.h>
 #include <stdio.h>
 
 //Screen dimension constants
-const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 480;
+const int SCREEN_WIDTH = 800;
+const int SCREEN_HEIGHT = 600;
 
 int main(int argc, char* args[])
 {

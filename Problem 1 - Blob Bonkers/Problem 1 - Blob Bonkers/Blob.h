@@ -1,25 +1,26 @@
 #ifndef _BLOB_H_
 #define _BLOB_H_
 
-#include "Box2d.h"
+#include "Box2D/Box2D.h"
 using namespace std;
 
 class Blob{
 private:
-	//bVec2 m_position;
-	//bVec2 m_velocity;
+	b2Vec2 m_position;
+	b2Vec2 m_velocity;
 
 public:
 	Blob();
 	~Blob();
 
+	void Initalize();
 	void Update(); //Should be passed gametime
-
+	
 	//Getters and setters
-	bVec2 getPosition();
-	bVec2 getVelocity();
+	b2Vec2 getPosition();
+	b2Vec2 getVelocity();
 
-	void setPosition(bVec2);
-	void setVelocity(bVec2);
+	void setPosition(b2Vec2);
+	void setVelocity(b2Vec2);
 };
 #endif // !_BLOB_H_
