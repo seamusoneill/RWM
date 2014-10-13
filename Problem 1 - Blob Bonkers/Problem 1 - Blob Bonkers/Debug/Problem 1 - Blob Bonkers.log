@@ -1,0 +1,11 @@
+﻿Build started 13/10/2014 20:05:45.
+     1>Project "C:\Users\Séamus\Documents\CGD\Y4\RWM\Problem 1 - Blob Bonkers\Problem 1 - Blob Bonkers\Problem 1 - Blob Bonkers.vcxproj" on node 2 (Build target(s)).
+     1>Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Séamus\Documents\CGD\Y4\RWM\Problem 1 - Blob Bonkers\Debug\Problem 1 - Blob Bonkers.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib SDL2.lib SDL2main.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Séamus\Documents\CGD\Y4\RWM\Problem 1 - Blob Bonkers\Debug\Problem 1 - Blob Bonkers.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Séamus\Documents\CGD\Y4\RWM\Problem 1 - Blob Bonkers\Debug\Problem 1 - Blob Bonkers.lib" /MACHINE:X86 Debug\main.obj
+     1>MSVCRTD.lib(cinitexe.obj) : warning LNK4098: defaultlib 'msvcrt.lib' conflicts with use of other libs; use /NODEFAULTLIB:library
+         Problem 1 - Blob Bonkers.vcxproj -> C:\Users\Séamus\Documents\CGD\Y4\RWM\Problem 1 - Blob Bonkers\Debug\Problem 1 - Blob Bonkers.exe
+     1>Done Building Project "C:\Users\Séamus\Documents\CGD\Y4\RWM\Problem 1 - Blob Bonkers\Problem 1 - Blob Bonkers\Problem 1 - Blob Bonkers.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.33
